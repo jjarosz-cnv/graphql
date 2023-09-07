@@ -1,0 +1,33 @@
+type Movie {
+    id: ID!
+    title: String
+    time: Int
+    director: Director
+}
+
+type Director {
+    id: ID!
+    firstName: String
+    lastName: String
+    movies: [Movie]
+}
+
+input DirectorInput {
+    firstName: String!,
+    lastName: String!
+}
+
+type Mutation {
+    createDirector(directorToSave: DirectorInput): Director
+}
+
+type Query {
+    allMovies: [Movie]
+    findOneMovie(id: ID!): Movie
+    allDirectors: [Director]
+    findOneDirector(id: ID!): Director
+}
+
+type Subscription {
+    directorListUpdate: [Director]
+}
